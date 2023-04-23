@@ -3,11 +3,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/523323c094.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Rock Paper Scissor Lizard Spock Game</title>
 </head>
 <body>
-
+    <h1 class="heading">
+        Rock Paper Scissor Lizard Spock Game
+    </h1>
+    <div class="game-area">
+        <div class="controls-area">
+            <p class="description">Rock</p><p class="description">Paper</p><p class="description">Scissor</p><p class="description">Lizard</p><p class="description">Spock</p>
+            <br>
+            <button data-type="rock" class="btn btn-rock">
+                <i class="fa-solid fa-hand-back-fist"></i>
+            </button>
+            <button data-type="paper" class="btn btn-paper">
+                <i class="fa-solid fa-hand"></i>
+            </button>
+            <button data-type="scissor" class="btn btn-scissor">
+                <i class="fa-solid fa-hand-scissors"></i>
+            </button>
+            <button data-type="lizard" class="btn btn-lizard">
+                <i class="fa-solid fa-hand-lizard"></i>
+            </button>
+            <button data-type="spock" class="btn btn-spock">
+                <i class="fa-solid fa-hand-spock"></i>
+            </button>
+        </div>
+        <div class="results-area">
+            <p class="results">Player: <span id="players-choice">-</span></p>
+            <p class="results">Computer: <span id="computers-choice">-</span></p>
+            <p class="results">Result: <span id="computers-choice">-</span></p>
+        </div>
+    </div>
+    <div class="score-area">
+        <p class="scores">Wins: </p>
+        <p class="scores">Losses: </p>
+    </div>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

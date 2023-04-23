@@ -1,0 +1,95 @@
+body {
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+    color: #0e1416;
+    text-align: center;
+}
+
+.heading {
+    margin: 2%;
+}
+
+.game-area {
+    width: 80%;
+    max-width: 900px;
+    background-color: #f4f4f4;
+    margin: 0 auto;
+    padding: 2%;
+}
+
+.description {
+    display: inline-block;
+    text-align: center;
+    margin: 0 7.2%;
+}
+
+.scores {
+    display: inline-block;
+    padding: 0 20px;
+}
+/* buttons */
+
+.btn {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 10px solid;
+    font-size: 3.5rem;
+    background-color: white;
+    margin: 1.2%;
+}
+
+.btn-rock {
+    border-color: #7a7a7a;
+    color: #7a7a7a;
+}
+
+.btn-rock:active,
+.btn-rock:hover {
+    background-color: #b6b5b5;
+    color: white;
+}
+
+.btn-paper {
+    border-color: #ec9e93;
+    color: #ec9e93;
+}
+
+.btn-paper:active, 
+.btn-paper:hover {
+    background-color: #efc3bd;
+    color: white;
+}
+
+.btn-scissor {
+    border-color: #e8dd7e;
+    color: #e8dd7e;
+}
+
+.btn-scissor:active,
+.btn-scissor:hover {
+    background-color: #f4eeb7;
+    color: white;
+}
+
+.btn-lizard {
+    border-color: #89af86;
+    color: #89af86;
+}
+
+.btn-lizard:active,
+.btn-lizard:hover {
+    background-color: #b7d4b5;
+    color: white;
+}
+
+.btn-spock {
+    border-color: #97c3da;
+    color: #97c3da;
+}
+
+.btn-spock:active,
+.btn-spock:hover {
+    background-color: #bbd5e3;
+    color: white;
+}

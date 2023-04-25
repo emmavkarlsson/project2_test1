@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,19 +17,19 @@
         <div class="controls-area">
             <p class="description">Rock</p><p class="description">Paper</p><p class="description">Scissor</p><p class="description">Lizard</p><p class="description">Spock</p>
             <br>
-            <button data-type="rock" class="btn btn-rock" id="rock">
+            <button name="rock" class="btn btn-rock" id="rock">
                 <i class="fa-solid fa-hand-back-fist"></i>
             </button>
-            <button data-type="paper" class="btn btn-paper" id="paper">
+            <button name="paper" class="btn btn-paper" id="paper">
                 <i class="fa-solid fa-hand"></i>
             </button>
-            <button data-type="scissor" class="btn btn-scissor" id="scissor">
+            <button name="scissor" class="btn btn-scissor" id="scissor">
                 <i class="fa-solid fa-hand-scissors"></i>
             </button>
-            <button data-type="lizard" class="btn btn-lizard" id="lizard">
+            <button name="lizard" class="btn btn-lizard" id="lizard">
                 <i class="fa-solid fa-hand-lizard"></i>
             </button>
-            <button data-type="spock" class="btn btn-spock" id="spock">
+            <button name="spock" class="btn btn-spock" id="spock">
                 <i class="fa-solid fa-hand-spock"></i>
             </button>
         </div>
@@ -39,8 +40,8 @@
         </div>
     </div>
     <div class="score-area">
-        <p class="scores">Wins: </p>
-        <p class="scores">Losses: </p>
+        <p class="scores">Wins: </p><span id="wins">0</span>
+        <p class="scores">Losses: </p><span id="losses">0</span>
     </div>
     <script src="assets/js/script2.js"></script>
 </body>

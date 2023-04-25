@@ -1,46 +1,141 @@
-document.addEventListener('DOMContentLoaded', playersChoice());
+let player = document.getElementById('players-choice');
+let computer = document.getElementById('computers-choice');
+let result = document.getElementById('result');
 
-function playersChoice () {
-    let buttons = document.getElementsByTagName('button');
-    for (let button of buttons) {
-        button.addEventListener('click', function() {
-            if (this.getAttribute('id') === "rock") {
-                document.getElementById('players-choice').textContent = 'Rock';
-            } else if (this.getAttribute('id') === "paper") {
-                document.getElementById('players-choice').textContent = 'Paper';
-            } else if (this.getAttribute('id') === "scissor") {
-                document.getElementById('players-choice').textContent = 'Scissors';
-            } else if (this.getAttribute('id') === "lizard") {
-                document.getElementById('players-choice').textContent = 'Lizard';
-            } else if (this.getAttribute('id') === "spock") {
-                document.getElementById('players-choice').textContent = 'Spock';
-            }
-        })
-    } 
+// document.addEventListener("DOMContentLoaded", function() {
+//     let buttons = document.getElementsByTagName('button');
+//     for (let button of buttons) {
+//         button.addEventListener('click', function() {
+//             if (this.getAttribute('id') === "rock") {
+//                 document.getElementById('players-choice').textContent = 'Rock';
+//             } else if (this.getAttribute('id') === "paper") {
+//                 document.getElementById('players-choice').textContent = 'Paper';
+//             } else if (this.getAttribute('id') === "scissor") {
+//                 document.getElementById('players-choice').textContent = 'Scissors';
+//             } else if (this.getAttribute('id') === "lizard") {
+//                 document.getElementById('players-choice').textContent = 'Lizard';
+//             } else if (this.getAttribute('id') === "spock") {
+//                 document.getElementById('players-choice').textContent = 'Spock';
+//             }
+//         })
+//     } 
+
+//     computerTurn();
+//     checkWinner();
+//     scores();
+
+
+// });
+
+// function runGame {
+//     computerTurn();
+//     checkWinner();
+//     scores();
+// }
+
+
+let rock = document.getElementById('rock');
+rock.addEventListener('click', rockClick);
+
+function rockClick(event) {
+    player.textContent = 'Rock';
+    computerTurn();
+    checkWinner();
+    scores();
 }
 
-// let rock = document.getElementById('rock');
-// let paper = document.getElementById('paper');
-// let scissor = document.getElementById('scissor');
-// let lizard = document.getElementById('lizard');
-// let spock = document.getElementById('spock');
+let paper = document.getElementById('paper');
+paper.addEventListener('click', paperClick);
 
-
-
-Define an object to represent the game choices
-let choices = {
-    rock: { defeats: ['scissors', 'lizard'] },
-    paper: { defeats: ['rock', 'spock'] },
-    scissor: { defeats: ['paper', 'lizard'] },
-    lizard: { defeats: ['paper', 'spock'] },
-    spock: { defeats: ['rock', 'scissors'] }
-  };
-
-function computersChoice() {
-    let choiceKeys = Object.keys(choices);
-    let randomIndex = Math.floor(Math.random() * choiceKeys.length);
-    document.getElementById('computers-choice').textContent = 'choiceKeys[randomIndex]';
-    console.log('hey');
+function paperClick(event) {
+    player.textContent = 'Paper';
+    computerTurn();
+    checkWinner();
+    scores();
 }
 
+let scissor = document.getElementById('scissor');
+scissor.addEventListener('click', scissorClick);
 
+function scissorClick(event) {
+    player.textContent = 'Scissor';
+    computerTurn();
+    checkWinner();
+    scores();
+}
+
+let lizard = document.getElementById('lizard');
+lizard.addEventListener('click', lizardClick);
+
+function lizardClick(event) {
+    player.textContent = 'Lizard';
+    computerTurn();
+    checkWinner();
+    scores();
+}
+
+let spock = document.getElementById('spock');
+spock.addEventListener('click', spockClick);
+
+function spockClick(event) {
+    player.textContent = 'Spock';
+    computerTurn();
+    checkWinner();
+    scores();
+}
+
+function computerTurn() {
+
+    let randNum = Math.floor(Math.random() * 5) + 1;
+
+    switch(randNum){
+      case 1:
+        computer.textContent = "Rock";
+        break;
+      case 2:
+        computer.textContent = "Paper";
+        break;
+      case 3:
+        computer.textContent = "Scissor";
+        break;
+      case 4:
+        computer.textContent = "Lizard";
+        break;
+      case 5:
+        computer.textContent = "Spock";
+    }
+}
+
+function checkWinner() {
+    if(player.textContent == computer.textContent){
+      document.getElementById('result').textContent = "It's a tie!";
+    } else if (computer.textContent == "Rock") {
+        return (player.textContent == "Paper" || player.textContent == "Spock") ? result.textContent = "You won!" : result.textContent = "You lost!";
+    } else if (computer.textContent == "Paper") {
+        return (player.textContent == "Scissor" || player.textContent == "Lizard") ? result.textContent = "You won!" : result.textContent = "You lost!";
+    } else if (computer.textContent == "Scissor") {
+        return (player.textContent == "Rock" || player.textContent == "Spock") ? result.textContent = "You won!" : result.textContent = "You lost!";
+    } else if (computer.textContent == "Lizard") {
+        return (player.textContent == "Rock" || player.textContent == "Scissor") ? result.textContent = "You won!" : result.textContent = "You lost!";
+    } else if (computer.textContent == "Spock") {
+        return (player.textContent == "Lizard" || player.textContent == "Paper") ? result.textContent = "You won!" : result.textContent = "You lost!";
+    }
+}
+
+function scores() {
+    if (result.textContent == "You won!") {
+        incrementWins();
+    } else if (result.textContent == "You lost!") {
+        incrementLosses();
+    }
+}
+
+function incrementWins() {
+    let oldWins = parseInt(document.getElementById('wins').innerText);
+    document.getElementById('wins').innerText = ++oldWins;
+}
+
+function incrementLosses() {
+    let oldLosses = parseInt(document.getElementById('losses').innerText);
+    document.getElementById('losses').innerText = ++oldLosses;
+}

@@ -3,50 +3,33 @@ let computer = document.getElementById('computers-choice');
 let result = document.getElementById('result');
 
 let rock = document.getElementById('rock');
-rock.addEventListener('click', rockClick);
-
-function rockClick(event) {
-    player.textContent = 'Rock';
-    computerTurn();
-    checkWinner();
-    scores();
-}
-
 let paper = document.getElementById('paper');
-paper.addEventListener('click', paperClick);
-
-function paperClick(event) {
-    player.textContent = 'Paper';
-    computerTurn();
-    checkWinner();
-    scores();
-}
-
 let scissor = document.getElementById('scissor');
-scissor.addEventListener('click', scissorClick);
-
-function scissorClick(event) {
-    player.textContent = 'Scissor';
-    computerTurn();
-    checkWinner();
-    scores();
-}
-
 let lizard = document.getElementById('lizard');
-lizard.addEventListener('click', lizardClick);
+let spock = document.getElementById('spock');
 
-function lizardClick(event) {
-    player.textContent = 'Lizard';
-    computerTurn();
-    checkWinner();
-    scores();
+
+let buttons = document.getElementsByTagName('button');
+for (let button of buttons) {
+    button.addEventListener('click', runGame);
 }
 
-let spock = document.getElementById('spock');
-spock.addEventListener('click', spockClick);
+function playerTurn(){
+    if (rock.clicked == true) {
+        document.getElementById('players-choice').textContent = 'Rock';
+    } else if (paper.clicked == true) {
+        document.getElementById('players-choice').textContent = 'Paper';
+    } else if (scissor.clicked == true) {
+        document.getElementById('players-choice').textContent = 'Scissors';
+    } else if (lizard.clicked == true) {
+        document.getElementById('players-choice').textContent = 'Lizard';
+    } else if (spock.clicked == true) {
+        document.getElementById('players-choice').textContent = 'Spock';
+    }
+}
 
-function spockClick(event) {
-    player.textContent = 'Spock';
+function runGame() {
+    playerTurn();
     computerTurn();
     checkWinner();
     scores();

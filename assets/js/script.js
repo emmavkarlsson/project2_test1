@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', playersChoice());
 
 function playersChoice () {
     let buttons = document.getElementsByTagName('button');
-
     for (let button of buttons) {
         button.addEventListener('click', function() {
             if (this.getAttribute('id') === "rock") {
@@ -20,13 +19,15 @@ function playersChoice () {
     } 
 }
 
-let rock = document.getElementById('rock');
-let paper = document.getElementById('paper');
-let scissor = document.getElementById('scissor');
-let lizard = document.getElementById('lizard');
-let spock = document.getElementById('spock');
+// let rock = document.getElementById('rock');
+// let paper = document.getElementById('paper');
+// let scissor = document.getElementById('scissor');
+// let lizard = document.getElementById('lizard');
+// let spock = document.getElementById('spock');
 
-// Define an object to represent the game choices
+
+
+Define an object to represent the game choices
 let choices = {
     rock: { defeats: ['scissors', 'lizard'] },
     paper: { defeats: ['rock', 'spock'] },
@@ -34,4 +35,12 @@ let choices = {
     lizard: { defeats: ['paper', 'spock'] },
     spock: { defeats: ['rock', 'scissors'] }
   };
+
+function computersChoice() {
+    let choiceKeys = Object.keys(choices);
+    let randomIndex = Math.floor(Math.random() * choiceKeys.length);
+    document.getElementById('computers-choice').textContent = 'choiceKeys[randomIndex]';
+    console.log('hey');
+}
+
 

@@ -3,50 +3,37 @@ let computer = document.getElementById('computers-choice');
 let result = document.getElementById('result');
 
 let rock = document.getElementById('rock');
-rock.addEventListener('click', rockClick);
-
-function rockClick(event) {
-    player.textContent = 'Rock';
-    computerTurn();
-    checkWinner();
-    scores();
-}
-
 let paper = document.getElementById('paper');
-paper.addEventListener('click', paperClick);
-
-function paperClick(event) {
-    player.textContent = 'Paper';
-    computerTurn();
-    checkWinner();
-    scores();
-}
-
 let scissor = document.getElementById('scissor');
-scissor.addEventListener('click', scissorClick);
-
-function scissorClick(event) {
-    player.textContent = 'Scissor';
-    computerTurn();
-    checkWinner();
-    scores();
-}
-
 let lizard = document.getElementById('lizard');
-lizard.addEventListener('click', lizardClick);
+let spock = document.getElementById('spock');
 
-function lizardClick(event) {
-    player.textContent = 'Lizard';
-    computerTurn();
-    checkWinner();
-    scores();
+let buttons = document.getElementsByTagName('button');
+for (let button of buttons) {
+    button.addEventListener('click', runGame);
 }
 
-let spock = document.getElementById('spock');
-spock.addEventListener('click', spockClick);
+rock.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Rock';
+});
 
-function spockClick(event) {
-    player.textContent = 'Spock';
+paper.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Paper';
+});
+
+scissor.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Scissor';
+});
+
+lizard.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Lizard';
+});
+
+spock.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Paper';
+});
+
+function runGame() {
     computerTurn();
     checkWinner();
     scores();

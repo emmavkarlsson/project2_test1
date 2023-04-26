@@ -8,28 +8,32 @@ let scissor = document.getElementById('scissor');
 let lizard = document.getElementById('lizard');
 let spock = document.getElementById('spock');
 
-
 let buttons = document.getElementsByTagName('button');
 for (let button of buttons) {
     button.addEventListener('click', runGame);
 }
 
-function playerTurn(){
-    if (rock.clicked == true) {
-        document.getElementById('players-choice').textContent = 'Rock';
-    } else if (paper.clicked == true) {
-        document.getElementById('players-choice').textContent = 'Paper';
-    } else if (scissor.clicked == true) {
-        document.getElementById('players-choice').textContent = 'Scissors';
-    } else if (lizard.clicked == true) {
-        document.getElementById('players-choice').textContent = 'Lizard';
-    } else if (spock.clicked == true) {
-        document.getElementById('players-choice').textContent = 'Spock';
-    }
-}
+rock.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Rock';
+});
+
+paper.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Paper';
+});
+
+scissor.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Scissor';
+});
+
+lizard.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Lizard';
+});
+
+spock.addEventListener('click', function () {
+    document.getElementById('players-choice').textContent = 'Paper';
+});
 
 function runGame() {
-    playerTurn();
     computerTurn();
     checkWinner();
     scores();
@@ -90,3 +94,18 @@ function incrementLosses() {
     let oldLosses = parseInt(document.getElementById('losses').innerText);
     document.getElementById('losses').innerText = ++oldLosses;
 }
+
+
+// function playerTurn(){
+//     if (document.getElementById('rock') == true) {
+//         alert('hey! you clicked');
+//     } else if (paper.clicked == true) {
+//         document.getElementById('players-choice').textContent = 'Paper';
+//     } else if (scissor.clicked == true) {
+//         document.getElementById('players-choice').textContent = 'Scissors';
+//     } else if (lizard.clicked == true) {
+//         document.getElementById('players-choice').textContent = 'Lizard';
+//     } else if (spock.clicked == true) {
+//         document.getElementById('players-choice').textContent = 'Spock';
+//     }
+// }

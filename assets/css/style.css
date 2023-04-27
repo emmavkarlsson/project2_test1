@@ -17,11 +17,11 @@ body {
     padding: 2%;
 }
 
-.description {
+/* .description {
     display: inline-block;
     text-align: center;
     margin: 0 7.2%;
-}
+} */
 
 .results {
     font-weight: bold;

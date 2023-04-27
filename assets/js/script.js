@@ -14,23 +14,23 @@ for (let button of buttons) {
 }
 
 rock.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Rock';
+    player.textContent = 'Rock';
 });
 
 paper.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Paper';
+    player.textContent = 'Paper';
 });
 
 scissor.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Scissor';
+    player.textContent = 'Scissor';
 });
 
 lizard.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Lizard';
+    player.textContent = 'Lizard';
 });
 
 spock.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Paper';
+    player.textContent = 'Paper';
 });
 
 function runGame() {
@@ -80,6 +80,8 @@ function checkWinner() {
 function scores() {
     if (result.textContent == "You won!") {
         incrementWins();
+    } else if (result.textContent == "It's a tie!") {
+        incrementTies();
     } else if (result.textContent == "You lost!") {
         incrementLosses();
     }
@@ -88,6 +90,11 @@ function scores() {
 function incrementWins() {
     let oldWins = parseInt(document.getElementById('wins').innerText);
     document.getElementById('wins').innerText = ++oldWins;
+}
+
+function incrementTies() {
+    let oldTies = parseInt(document.getElementById('ties').innerText);
+    document.getElementById('ties').innerText = ++oldTies;
 }
 
 function incrementLosses() {

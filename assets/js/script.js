@@ -101,3 +101,7 @@ function incrementLosses() {
     let oldLosses = parseInt(document.getElementById('losses').innerText);
     document.getElementById('losses').innerText = ++oldLosses;
 }
+
+function history() {
+    
+}

@@ -14,23 +14,23 @@ for (let button of buttons) {
 }
 
 rock.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Rock';
+    player.textContent = 'Rock';
 });
 
 paper.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Paper';
+    player.textContent = 'Paper';
 });
 
 scissor.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Scissor';
+    player.textContent = 'Scissor';
 });
 
 lizard.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Lizard';
+    player.textContent = 'Lizard';
 });
 
 spock.addEventListener('click', function () {
-    document.getElementById('players-choice').textContent = 'Paper';
+    player.textContent = 'Paper';
 });
 
 function runGame() {
@@ -80,6 +80,8 @@ function checkWinner() {
 function scores() {
     if (result.textContent == "You won!") {
         incrementWins();
+    } else if (result.textContent == "It's a tie!") {
+        incrementTies();
     } else if (result.textContent == "You lost!") {
         incrementLosses();
     }
@@ -90,22 +92,17 @@ function incrementWins() {
     document.getElementById('wins').innerText = ++oldWins;
 }
 
+function incrementTies() {
+    let oldTies = parseInt(document.getElementById('ties').innerText);
+    document.getElementById('ties').innerText = ++oldTies;
+}
+
 function incrementLosses() {
     let oldLosses = parseInt(document.getElementById('losses').innerText);
     document.getElementById('losses').innerText = ++oldLosses;
 }
 
+function history() {
+    
+}
 
-// function playerTurn(){
-//     if (document.getElementById('rock') == true) {
-//         alert('hey! you clicked');
-//     } else if (paper.clicked == true) {
-//         document.getElementById('players-choice').textContent = 'Paper';
-//     } else if (scissor.clicked == true) {
-//         document.getElementById('players-choice').textContent = 'Scissors';
-//     } else if (lizard.clicked == true) {
-//         document.getElementById('players-choice').textContent = 'Lizard';
-//     } else if (spock.clicked == true) {
-//         document.getElementById('players-choice').textContent = 'Spock';
-//     }
-// }

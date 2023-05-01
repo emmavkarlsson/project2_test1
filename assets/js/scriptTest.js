@@ -8,35 +8,49 @@ let scissor = document.getElementById('scissor');
 let lizard = document.getElementById('lizard');
 let spock = document.getElementById('spock');
 
+let messageSpan = document.getElementById('message');
 let buttons = document.getElementsByTagName('button');
-for (let button of buttons) {
-    button.addEventListener('click', runGame);
+
+function selectUserValue(event) {
+	player.textContent = event.target.name;
 }
 
-rock.addEventListener('click', function () {
-    player.textContent = 'Rock';
-});
+function initializeGame(event) {
+  for (let button of buttons) {
+      button.addEventListener('click', runGameWithTimeout);
+  }
+}
 
-paper.addEventListener('click', function () {
-    player.textContent = 'Paper';
-});
+document.addEventListener("DOMContentLoaded", initializeGame);
 
-scissor.addEventListener('click', function () {
-    player.textContent = 'Scissor';
-});
+function runGameWithTimeout(event) {
+    selectUserValue(event);
+    messageSpan.textContent = "Please wait for the computer to select";
+    // toggleButtons(true);
+    setTimeout(runGame, 2000);
+}
+ 
+// not working!!!!!
 
-lizard.addEventListener('click', function () {
-    player.textContent = 'Lizard';
-});
+// function toggleButtons(flag) {
+//     Array.from(document.getElementsByClassName("btn")).forEach(toggleButton);
+// }
 
-spock.addEventListener('click', function () {
-    player.textContent = 'Paper';
-});
-
+// function toggleButton(buttonElement) {
+//     buttonElement.disabled = flag;
+//     if (!flag) {
+//         buttonElement.classList.add("disabled");
+//     } else {
+//         buttonElement.classList.remove("disabled");
+//     }
+// }
+ 
 function runGame() {
     computerTurn();
+    messageSpan.textContent = "";
     checkWinner();
     scores();
+    // toggleButtons(true);
 }
 
 function computerTurn() {
@@ -102,7 +116,14 @@ function incrementLosses() {
     document.getElementById('losses').innerText = ++oldLosses;
 }
 
-function history() {
-    
-}
+// function addElement() {
+//     const newDiv = document.createElement("div");
+//     const playerHistory = document.createTextNode(player.textContent);
+//     const computerHistory = document.createTextNode(computer.textContent);
+//     newDiv.appendChild(playerHistory);
+//     newDiv.appendChild(computerHistory);
+//     const currentDiv = document.getElementById("div1");
+//     document.body.insertBefore(newDiv, currentDiv);
+// }
+
 

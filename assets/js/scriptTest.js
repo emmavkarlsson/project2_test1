@@ -1,11 +1,23 @@
+document.addEventListener("DOMContentLoaded", initializeGame);
+
+function initializeGame(event) {
+    for (let button of buttons) {
+        const userChoice = button.name;
+        
+        button.addEventListener('click', function(event) {
+            makeUserSelection(userChoice);
+        });
+    }
+}
+
 // UI elements
-let player = document.getElementById('players-choice');
+let user = document.getElementById('users-choice');
 let computer = document.getElementById('computers-choice');
 let result = document.getElementById('result');
 
 let rock = document.getElementById('rock');
 let paper = document.getElementById('paper');
-let scissor = document.getElementById('scissor');
+let scissors = document.getElementById('scissors');
 let lizard = document.getElementById('lizard');
 let spock = document.getElementById('spock');
 
@@ -21,6 +33,11 @@ let userScore = 0;
 let computerScore = 0;
 let tieGames = 0;
 
+/**
+ * Disabling the buttons when the user has clicked on them,
+ * as the user waits for the computer to make it's choice,
+ * and enabling them again when the results are shown
+ */
 function toggleButtons(isEnabled) {
     for (let button of buttons) {
         if (isEnabled) {
@@ -31,6 +48,9 @@ function toggleButtons(isEnabled) {
     }
 }
 
+/**
+ * The game function for when the user has made it's choice
+ */
 function makeUserSelection(userChoice) {
     if (gameInProgress == true) {
         return;
@@ -40,7 +60,7 @@ function makeUserSelection(userChoice) {
     toggleButtons(false);
 
     messageSpan.textContent = "Please wait for computer to select";
-    player.textContent = userChoice;
+    user.textContent = userChoice;
     computer.textContent = "";
     result.textContent = "";
 
@@ -48,9 +68,14 @@ function makeUserSelection(userChoice) {
         runGame(userChoice);
         gameInProgress = false;
         toggleButtons(true);
-    }, 3000);    
+    }, 1500);    
 }
 
+/**
+ * Runs the game after the user and computer has made it's choice
+ * Updates the score on the scoreboard and 
+ * the descriptive text
+ */
 function runGame(userChoice) {
     const computerChoice = computerTurn();    
     const winner = checkWinner(userChoice, computerChoice);
@@ -65,6 +90,9 @@ function runGame(userChoice) {
     lossesLabel.textContent = computerScore;
 }
 
+/**
+ * Function for determening the computers choice by random numbers
+ */
 function computerTurn() {
 
     let randNum = Math.floor(Math.random() * 5) + 1;
@@ -72,33 +100,22 @@ function computerTurn() {
     switch(randNum){
       case 1:
         return "Rock";
-        //computer.textContent = "Rock";
-        //break;
       case 2:
         return "Paper";
-        //computer.textContent = "Paper";
-        //break;
       case 3:
-        return "Scissor";
-        //computer.textContent = "Scissor";
-        //break;
+        return "Scissors";
       case 4:
         return "Lizard";
-        //computer.textContent = "Lizard";
-        //break;
       case 5:
         return "Spock";
-        //computer.textContent = "Spock";
     }
 }
 
-// Returns:
-// 0 = tie
-// 1 = user wins
-// -1 = computer wins
+/**
+ * Checks the winner of the game
+ */
 function checkWinner(userChoice, computerChoice) {
     if(userChoice == computerChoice){
-      //document.getElementById('result').textContent = "It's a tie!";
       return 0;
     } 
     
@@ -107,15 +124,15 @@ function checkWinner(userChoice, computerChoice) {
     } 
     
     if (computerChoice == "Paper") {
-        return (userChoice == "Scissor" || userChoice == "Lizard") ? 1 : -1;
+        return (userChoice == "Scissors" || userChoice == "Lizard") ? 1 : -1;
     } 
     
-    if (computerChoice == "Scissor") {
+    if (computerChoice == "Scissors") {
         return (userChoice == "Rock" || userChoice == "Spock") ? 1 : -1;
     } 
     
     if (computerChoice == "Lizard") {
-        return (userChoice == "Rock" || userChoice == "Scissor") ? 1 : -1;
+        return (userChoice == "Rock" || userChoice == "Scissors") ? 1 : -1;
     } 
     
     if (computerChoice == "Spock") {
@@ -123,10 +140,9 @@ function checkWinner(userChoice, computerChoice) {
     }
 }
 
-// Result:
-// 0 = tie
-// 1 = user wins
-// -1 = computer wins
+/**
+ * Increments the scores and records the results
+ */
 function recordResult(result) {
     if (result == 1) {
         userScore++;
@@ -136,30 +152,6 @@ function recordResult(result) {
         return "It's a tie!";
     } else if (result == -1) {
         computerScore++;
-        return "You Lose :(";
+        return "You Lose!";
     }
 }
-
-function initializeGame(event) {
-    for (let button of buttons) {
-        const userChoice = button.name;
-        
-        button.addEventListener('click', function(event) {
-            makeUserSelection(userChoice);
-        });
-    }
- }
-  
-document.addEventListener("DOMContentLoaded", initializeGame);
-
-// function addElement() {
-//     const newDiv = document.createElement("div");
-//     const playerHistory = document.createTextNode(player.textContent);
-//     const computerHistory = document.createTextNode(computer.textContent);
-//     newDiv.appendChild(playerHistory);
-//     newDiv.appendChild(computerHistory);
-//     const currentDiv = document.getElementById("div1");
-//     document.body.insertBefore(newDiv, currentDiv);
-// }
-
-
